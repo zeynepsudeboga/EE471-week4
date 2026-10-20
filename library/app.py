@@ -87,6 +87,12 @@ def parse_bool(value, name):
 
 # --- Routes ---
 
+@app.get("/")
+def index():
+    # The frontend is plain static files; Flask serves them from static/.
+    return app.send_static_file("index.html")
+
+
 @app.post("/api/items")
 def create_item():
     data = read_json_body()
